@@ -1,10 +1,20 @@
 import React from 'react';
 import ToyCard from './ToyCard'
 
-const ToyContainer = () => {
+const ToyContainer = (props) => {
+  let arrayOfCards = props.toyList.map((singleToy) => {
+    return <ToyCard
+      toy={singleToy}
+      key={singleToy.id}
+      deleteOneToy={props.deleteOneToy}
+      addOneLike={props.addOneLike}
+      />
+  })
   return(
     <div id="toy-collection">
-      {/* Render the collection of ToyCards */}
+      <ul>
+        {arrayOfCards}
+      </ul>
     </div>
   );
 }
