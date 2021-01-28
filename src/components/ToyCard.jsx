@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 
-class ToyCard extends Component {
+function ToyCard(props){
+    const toy = props.entry
+    const {name, likes, image} = toy
 
-  render() {
-    console.log(this.props.entry)
     return (
       <div className="card">
-        <h2>{this.props.entry.name}</h2>
-        <img src={this.props.entry.image} alt={"Image of" + this.props.entry.name} className="toy-avatar" />
-        <p>{this.props.entry.likes} Likes </p>
-        <button className="like-btn">Like {'<3'}</button>
-        <button className="del-btn">Donate to GoodWill</button>
+        <h2>{name}</h2>
+        <img src={image} alt={"Image of" + name} className="toy-avatar" />
+        <p>{likes} Likes </p>
+        <button className="like-btn" onClick={() => props.incrementLike(toy)}>Like {'<3'}</button>
+        <button className="del-btn" onClick={() => props.deleteToy(toy)}>Donate to GoodWill</button>
       </div>
     );
-  }
-
 }
+
 
 export default ToyCard;

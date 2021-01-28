@@ -17,6 +17,10 @@ class ToyForm extends Component {
   handleSubmit = (evt) => {
     evt.preventDefault()
     this.props.addToy(this.state)
+    this.setState({
+      name: '',
+      image: ''
+    })
   }
 
   render() {
@@ -24,9 +28,9 @@ class ToyForm extends Component {
       <div className="container">
         <form className="add-toy-form" onSubmit={this.handleSubmit}>
           <h3>Create a toy!</h3>
-          <input type="text" name="name" placeholder="Enter a toy's name..." className="input-text" onChange={this.handleAllInput}/>
+          <input type="text" name="name" placeholder="Enter a toy's name..." className="input-text" onChange={this.handleAllInput} value={this.state.name}/>
           <br/>
-          <input type="text" name="image" placeholder="Enter a toy's image URL..." className="input-text" onChange={this.handleAllInput}/>
+          <input type="text" name="image" placeholder="Enter a toy's image URL..." className="input-text" onChange={this.handleAllInput} value={this.state.image}/>
           <br/>
           <input type="submit" name="submit" value="Create New Toy" className="submit"/>
         </form>
